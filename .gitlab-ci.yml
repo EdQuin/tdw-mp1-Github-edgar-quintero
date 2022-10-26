@@ -21,6 +21,7 @@ image: node:latest
 stages:          # List of stages for jobs, and their order of execution
   - install
   - test
+  - build
 
 # Job's name
 install:
@@ -36,7 +37,7 @@ unit-test-job:   # This job runs in the test stage.
     - echo "Lint is running"
 
 lint-test-job:   # This job also runs in the test stage.
-  stage: test    # It can run at the same time as unit-test-job (in parallel).
+  stage: build    # It can run at the same time as unit-test-job (in parallel).
   script:
     - echo "Linting code... ."
     - echo "No lint issues found."
