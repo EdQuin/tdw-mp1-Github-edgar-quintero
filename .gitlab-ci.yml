@@ -20,7 +20,6 @@ lint-job:   # This job also runs in the test stage.
   script:
     - npm run lint
     - echo "Linting code... ."
-    - echo "No lint issues found."
 
 unit-test-job:   # This job runs in the test stage.
   stage: build    # It only starts when the job in the build stage completes successfully.
