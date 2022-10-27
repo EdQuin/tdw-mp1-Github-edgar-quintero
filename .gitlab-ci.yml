@@ -19,10 +19,16 @@ lint-job:   # This job also runs in the test stage.
   stage: test    # It can run at the same time as unit-test-job (in parallel).
   script:
     - npm run lint
-    - echo "Linting code... ."
+    - echo "Linting code running... ."
 
-unit-test-job:   # This job runs in the test stage.
-  stage: build    # It only starts when the job in the build stage completes successfully.
+prettier-job:   # This job also runs in the test stage.
+  stage: test    # It can run at the same time as unit-test-job (in parallel).
+  script:
+    - npm run prettier
+    - echo "Prettier code running... ."
+
+unit-test-job:   # This job runs in the build stage.
+  stage: build    # It only starts when the job in the unit-test stage completes successfully.
   script:
     - echo "Build final stage ok"
 
