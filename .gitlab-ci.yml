@@ -18,6 +18,7 @@ install:
 lint-job:   # This job also runs in the test stage.
   stage: test    # It can run at the same time as unit-test-job (in parallel).
   script:
+    - npm run lint
     - echo "Linting code... ."
 
 unit-test-job:   # This job runs in the test stage.
