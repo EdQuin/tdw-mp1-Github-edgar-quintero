@@ -6,8 +6,7 @@ stages:          # List of stages for jobs, and their order of execution
   - build
   - deploy
 
-# Job's name
-install:
+install:    # Job's name
   stage: install
   script:
     - npm install
