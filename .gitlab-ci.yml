@@ -40,4 +40,6 @@ build:          # This job runs in the build stage.
   artifacts:
     paths:
       - out/
+  rules:
+      - if: "$CI_COMMIT_BRANCH == 'main'"
 
