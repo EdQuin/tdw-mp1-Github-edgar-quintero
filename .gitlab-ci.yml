@@ -4,6 +4,7 @@ stages:          # List of stages for jobs, and their order of execution
   - install
   - test
   - build
+  - deploy
 
 # Job's name
 install:
@@ -43,3 +44,7 @@ build:          # This job runs in the build stage.
   rules:
       - if: "$CI_COMMIT_BRANCH == 'main'"
 
+deploy:
+  stage: deploy
+  script:
+    - echo "testing deploy stage"
