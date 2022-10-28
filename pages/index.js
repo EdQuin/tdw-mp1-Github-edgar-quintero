@@ -12,11 +12,11 @@ export default function Index({ preview, allPosts }) {
   const morePosts = allPosts.slice(1);
   return (
     <>
-      <Layout preview={preview}>
+      <Layout preview={preview}> 
+      <h1>No desistas Edgar, tu consiges!</h1>
         <Head>
           <title>
             Next.js Blog Example with {CMS_NAME}
-            <h1>No desistas Edgar, tu consiges!</h1>
           </title>
         </Head>
         <Container>
