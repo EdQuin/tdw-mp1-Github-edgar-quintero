@@ -2,8 +2,8 @@ image: node:latest
 
 stages:         
   - install
-  - build
   - test
+  - build
   - deploy
 
 install:   
