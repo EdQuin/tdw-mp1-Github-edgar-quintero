@@ -2,8 +2,8 @@ image: node:latest
 
 stages:         
   - install
-  - test
   - build
+  - test
   - deploy
 
 install:   
@@ -14,6 +14,16 @@ install:
   artifacts:
     paths:
       - node_modules/
+
+build:          
+  stage: build
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - out/
+  rules:
+      - if: "$CI_COMMIT_BRANCH == 'main'"
 
 lint-job:   
   stage: test    
@@ -32,16 +42,6 @@ testing-job:
   script:
     - npm run test
     - echo "Testing from Jest code running... ."
-
-build:          
-  stage: build
-  script:
-    - npm run build
-  artifacts:
-    paths:
-      - out/
-  rules:
-      - if: "$CI_COMMIT_BRANCH == 'main'"
 
 deploy:
   stage: deploy
