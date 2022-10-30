@@ -37,6 +37,7 @@ build:
   stage: build
   script:
     - npm run build
+    - echo "Building site"
   artifacts:
     paths:
       - out/
