@@ -1,0 +1,21 @@
+name: tdw-mp1-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+
+on: 
+  push: 
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+
+  lint-job:
+    name: lint code base
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      
+      - name: run Super.Linter
+      - uses: github/super-linter@v3
+     
