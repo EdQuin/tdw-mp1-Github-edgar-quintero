@@ -7,23 +7,15 @@ on:
   pull_request:
     branches: [main]
 
+
 jobs:
-  install:
-    runs on: ubuntu-latest
+  
+  build_a:
+    runs-on: ubuntu-latest
     steps:
-      - name: Chekout repository
-        uses: actions/checkout@v3
-        
-      - name: Dependencies cache
-        id: cache-npm
-        uses: actions/cache@v3
-        env: 
-          cache-name: cahce-node-modules
-        with: 
-          path: node_modules/
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: ${{ runner.OS }}-npm-cache-
+      - run: echo "This job will be run first."
+    
       
-      - name: Install dependencies
-        run: npm install
+
+     
      
