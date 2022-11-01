@@ -13,5 +13,5 @@ jobs:
   job1-install:
     runs-on: ubuntu-latest
     steps:
-      - run: "The first job is install."
+      - run: echo "The first job is install."
      
