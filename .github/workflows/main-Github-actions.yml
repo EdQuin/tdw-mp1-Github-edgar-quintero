@@ -14,6 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "The first job is install."
+      
+      - name: Testing Install
+      - run: npm install
  
   job2-test-jest:
     runs-on: ubuntu-latest
