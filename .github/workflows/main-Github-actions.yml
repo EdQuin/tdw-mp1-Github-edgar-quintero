@@ -13,8 +13,6 @@ jobs:
   job1-install:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "The first job is install."
-      
       - name: Testing Install
       - run: npm install
  
