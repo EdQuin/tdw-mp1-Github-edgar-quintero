@@ -69,14 +69,35 @@ jobs:
     runs-on: ubuntu-latest
     needs: [job1-install]
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
       - run: echo "The fourth job is testing jest."
+      - name: dependencies cache
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules/
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+      - name: test jest
+        run: npm run test
   
   job5-build:
     runs-on: ubuntu-latest
-    needs: [job4-jest]
+    needs: [job1-install,job2-lint,job3-prettier,job4-jest]
     steps:
-      - run: echo "This job number five is build and goes after test jest"
-  
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - run: echo "This job number five is build and goes after all the other jobs"
+      
+      - name: dependencies cache
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules/
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+
   job6-deploy:
     runs-on: ubuntu-latest
     needs: [job5-build]
