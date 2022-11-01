@@ -97,6 +97,12 @@ jobs:
         with:
           path: node_modules/
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+      - run: npm run build
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-files
+          path: out/
 
   job6-deploy:
     runs-on: ubuntu-latest
