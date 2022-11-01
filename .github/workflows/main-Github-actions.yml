@@ -15,21 +15,27 @@ jobs:
     steps:
       - run: echo "The first job is install."
  
-  job2-test-jest:
-    runs-on: ubuntu-latest
-    needs: [job1-install]
-    steps:
-      - run: echo "The second job is testing jest."
-  
-  job3-test-lint:
+  job2-test-lint:
     runs-on: ubuntu-latest
     needs: [job1-install]
     steps:
       - run: echo "The third job is linter."
   
-  job4-test-prettier:
+  job3-test-prettier:
     runs-on: ubuntu-latest
     needs: [job1-install]
     steps:
       - run: echo "The third job is prettier."
-     
+ 
+  job4-test-jest:
+    runs-on: ubuntu-latest
+    needs: [job1-install]
+    steps:
+      - run: echo "The second job is testing jest."
+  
+  job5-test-build:
+    runs-on: ubuntu-latest
+    needs: [job4-test-jest]
+    steps:
+      - run: echo "This job is build and goes after test jest"
+  
