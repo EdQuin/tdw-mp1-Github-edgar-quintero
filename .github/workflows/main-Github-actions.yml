@@ -14,4 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "The first job is install."
+ 
+  job2-test-jest:
+    runs-on: ubuntu-latest
+    needs: [job1-install]
+    steps:
+      - run: echo "The second job is testing jest."
      
