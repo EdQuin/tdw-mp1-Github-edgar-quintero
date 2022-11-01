@@ -8,14 +8,22 @@ on:
     branches: [main]
 
 jobs:
-
-  lint-job:
-    name: lint code base
-    runs-on: ubuntu-latest
+  install:
+    runs on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Chekout repository
+        uses: actions/checkout@v3
+        
+      - name: Dependencies cache
+        id: cache-npm
+        uses: actions/cache@v3
+        env: 
+          cache-name: cahce-node-modules
+        with: 
+          path: node_modules/
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.OS }}-npm-cache-
       
-      - name: run Super.Linter
-      - uses: github/super-linter@v3
+      - name: Install dependencies
+        run: npm install
      
