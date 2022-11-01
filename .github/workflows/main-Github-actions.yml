@@ -13,7 +13,6 @@ jobs:
   job1-install:
     runs-on: ubuntu-latest
     steps:
-      - name: Testing Install
       - run: echo "The first job is install."
  
   job2-test-jest:
