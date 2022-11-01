@@ -33,7 +33,7 @@ jobs:
  
   job2-lint:
     runs-on: ubuntu-latest
-    needs: [job1-install]
+    needs: job1-install
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -50,7 +50,7 @@ jobs:
   
   job3-prettier:
     runs-on: ubuntu-latest
-    needs: [job1-install]
+    needs: job1-install
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -67,7 +67,7 @@ jobs:
  
   job4-jest:
     runs-on: ubuntu-latest
-    needs: [job1-install]
+    needs: job1-install
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -106,7 +106,7 @@ jobs:
 
   job6-deploy:
     runs-on: ubuntu-latest
-    needs: [job5-build]
+    needs: job5-build
     steps:
       - run: echo "This is the final job and it is deploy"
   
