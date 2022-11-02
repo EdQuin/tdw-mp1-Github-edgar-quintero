@@ -129,8 +129,4 @@ jobs:
         with:
           name: build-files
           path: out/
-        env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-      - run: npm ci  
-      - run: npx netlify-cli deploy --dir=out --prod 
+      - run: npx netlify-cli deploy --site ${{secrets.NETLIFY_SITE_ID}} --auth ${{secrets.NETLIFY_AUTH_TOKEN}} --prod
