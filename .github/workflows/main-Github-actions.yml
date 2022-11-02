@@ -132,5 +132,5 @@ jobs:
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        
-      - run: npx netlify-cli deploy 
+      - run: npm ci  
+      - run: npx netlify-cli deploy --dir=out --prod 
